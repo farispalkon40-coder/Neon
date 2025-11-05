@@ -3,52 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neon Store ⚡ Energi Edition</title>
+  <title>NeonStore V10 ⚡ Energi Universe Edition</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="particles"></canvas>
 
-  <!-- Sponsor Banner -->
-  <section class="sponsor-banner fade-in">
-    <img src="images/sponsor.jpg" alt="Sponsor Banner">
+  <!-- Intro Screen -->
+  <section id="intro" class="intro-screen">
+    <div class="logo">
+      <h1>NEON STORE</h1>
+      <p>⚡ Energi Universe Edition</p>
+      <button id="lanjutBtn">Lanjutkan</button>
+    </div>
   </section>
 
-  <!-- Promo Sponsor Button -->
-  <div class="promo-btn fade-in">🌈 PROMO SPONSOR</div>
+  <!-- Header Sponsor -->
+  <section class="sponsor fade-in">
+    <div class="sponsor-box">SPONSOR PROMO</div>
+  </section>
 
-  <!-- Etalase Produk -->
+  <!-- Etalase -->
   <section class="etalase fade-in">
-    <div class="produk-card">
+    <div class="card">
       <h3>Fish It</h3>
       <p>Rp25.000</p>
     </div>
-    <div class="produk-card">
+    <div class="card">
       <h3>Red Finger</h3>
       <p>Rp30.000</p>
     </div>
-    <div class="produk-card">
+    <div class="card">
       <h3>Joki Rank</h3>
       <p>Rp40.000</p>
     </div>
-    <div class="produk-card">
+    <div class="card">
       <h3>Bundle Special</h3>
       <p>Rp50.000</p>
     </div>
-    <div class="produk-card">
+    <div class="card">
       <h3>Energy Boost</h3>
       <p>Rp20.000</p>
     </div>
-    <div class="produk-card">
+    <div class="card">
       <h3>Neon Token</h3>
       <p>Rp10.000</p>
     </div>
   </section>
 
-  <footer class="fade-in">
-    © 2025 Neon Store — Energi Edition ⚡
+  <!-- Footer -->
+  <footer>
+    © 2025 NeonStore — V10 Energi Universe Edition ⚡
   </footer>
 
+  <audio id="bgm" loop>
+    <source src="audio/bgmusic.mp3" type="audio/mpeg" />
+  </audio>
+
   <script src="script.js"></script>
+  <script src="admin.js"></script>
 </body>
-  </html>
+    </html>
