@@ -1,155 +1,172 @@
-/* Umum */
-body {
+/* --- RESET --- */
+* {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  color: #fff;
-  background: #000;
-  overflow-x: hidden;
-}
-h1, h2 { text-align: center; }
-
-.neon-button {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: transparent;
-  border: 2px solid #b026ff;
-  color: #fff;
-  padding: 15px 40px;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 12px;
-  box-shadow: 0 0 15px #b026ff;
-  transition: 0.3s;
-}
-.neon-button:hover {
-  background: #b026ff;
-  color: #fff;
-  box-shadow: 0 0 25px #b026ff;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Poster fullscreen */
-.poster-container {
-  position: relative;
-  width: 100vw;
+/* --- INTRO PAGE --- */
+.intro-body {
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
 }
-.poster-fullscreen {
+
+.aura {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ff00ff, #00ffff, #ff00ff);
+  animation: spin 6s linear infinite;
+  filter: blur(60px);
+  opacity: 0.8;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.intro-content {
+  text-align: center;
+  z-index: 2;
+}
+
+.neon-title {
+  font-size: 2.5em;
+  color: #fff;
+  text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+  margin-bottom: 20px;
+}
+
+.btn-lanjut {
+  padding: 10px 25px;
+  border: none;
+  font-size: 1.1em;
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #00ffff;
+  transition: all 0.3s;
+}
+.btn-lanjut:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff00ff;
+}
+
+/* --- HOME PAGE --- */
+.home-body {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
-  background-color: #000;
+  background: repeating-linear-gradient(
+    rgba(255,255,255,0.03) 0 1px,
+    transparent 1px 2px
+  );
+  animation: scan 3s linear infinite;
 }
 
-/* Fade out */
-.fade-out {
-  animation: fadeOut 1.2s forwards;
-}
-@keyframes fadeOut {
-  to { opacity: 0; transform: scale(1.05); }
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(10px); }
 }
 
-/* Halaman utama */
-header {
+/* SPONSOR */
+.sponsor {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(5px);
-}
-.logo {
-  font-size: 1.5rem;
-  text-shadow: 0 0 15px #b026ff;
-}
-.controls button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.controls button:hover {
-  color: #b026ff;
-  text-shadow: 0 0 10px #b026ff;
-}
-
-/* Sponsor */
-.sponsor-section {
-  text-align: center;
-  margin-top: 40px;
+  justify-content: center;
+  padding: 20px;
 }
 .sponsor-box {
-  display: inline-block;
-  background: rgba(0,0,0,0.6);
-  border: 2px solid #b026ff;
-  box-shadow: 0 0 25px #b026ff;
-  padding: 15px;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-.sponsor-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 35px #b026ff;
-}
-.sponsor-box img {
-  width: 200px;
+  padding: 15px 25px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  color: black;
   border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 0 25px #ff00ff;
 }
 
-/* Etalase */
+/* ETALASE */
 .etalase {
-  margin: 40px auto;
-  width: 90%;
-  text-align: center;
-}
-.grid-produk {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 30px;
 }
+
 .produk {
-  background: rgba(0,0,0,0.6);
-  border: 2px solid #b026ff;
-  border-radius: 20px;
-  box-shadow: 0 0 20px #b026ff;
-  padding: 10px;
-  width: 250px;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, #ff00ff, #00ffff) 1;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+  cursor: pointer;
   transition: 0.3s;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
 }
+
 .produk:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 40px #b026ff;
+  box-shadow: 0 0 25px #00ffff;
 }
-.produk img {
-  width: 100%;
-  border-radius: 12px;
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
-.produk p {
+
+/* POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.popup-content {
+  background: black;
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 30px #ff00ff;
+  text-align: center;
+}
+.popup-content a {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
   margin: 10px 0;
   font-weight: bold;
-  color: #fff;
 }
-
-/* Background Partikel */
-#particle-bg {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
-  background: rgba(0,0,0,0.7);
-  box-shadow: 0 -2px 20px #b026ff;
+.popup-content button {
+  background: none;
+  border: 1px solid #ff00ff;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 8px;
   }
