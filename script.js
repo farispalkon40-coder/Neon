@@ -1,61 +1,25 @@
-// Efek bintang neon
-const canvas = document.getElementById("particle-bg");
-const ctx = canvas.getContext("2d");
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-
-let stars = [];
-for (let i = 0; i < 120; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2,
-    d: Math.random() + 0.5
-  });
+function lanjut() {
+  document.body.classList.add('fade-out');
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 800);
 }
 
-function animateStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#b026ff";
-  for (let s of stars) {
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  moveStars();
-  requestAnimationFrame(animateStars);
+function bukaPopup(nama, harga) {
+  document.getElementById('popup-name').innerText = nama;
+  document.getElementById('popup-price').innerText = harga;
+  const msg = `HALO KAK NEON DODON SAYA MAU PESAN%0A%0ANAMA: ${nama}%0APRICE: ${harga}`;
+  const waNumber = "6281266435034";
+  const url = `https://wa.me/${waNumber}?text=${msg}`;
+  document.getElementById('wa-link').href = url;
+  document.getElementById('popup').style.display = 'flex';
 }
 
-function moveStars() {
-  for (let s of stars) {
-    s.y += s.d;
-    if (s.y > canvas.height) {
-      s.y = 0;
-      s.x = Math.random() * canvas.width;
-    }
-  }
+function tutupPopup() {
+  document.getElementById('popup').style.display = 'none';
 }
-animateStars();
 
-// Tombol musik dan tema
-const music = document.getElementById("bg-music");
-const musicBtn = document.getElementById("toggle-music");
-const themeBtn = document.getElementById("toggle-theme");
-
-let musicPlaying = false;
-musicBtn.addEventListener("click", () => {
-  if (musicPlaying) {
-    music.pause();
-  } else {
-    music.play();
-  }
-  musicPlaying = !musicPlaying;
-  musicBtn.textContent = musicPlaying ? "🔊" : "🎵";
-});
-
-let darkMode = true;
-themeBtn.addEventListener("click", () => {
-  darkMode = !darkMode;
-  document.body.style.background = darkMode ? "#000" : "#fff";
-  document.body.style.color = darkMode ? "#fff" : "#000";
+// Efek transisi keluar
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add('fade-in');
 });
