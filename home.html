@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neon Store - Home</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Store — Etalase</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <canvas id="particle-bg"></canvas>
-
-  <header>
-    <h1 class="logo">💜 Neon Store ⚡</h1>
-    <div class="controls">
-      <button id="toggle-theme">🌙</button>
-      <button id="toggle-music">🎵</button>
-    </div>
+<body class="home-body">
+  <div class="bg-overlay"></div>
+  <header class="sponsor">
+    <div class="sponsor-box">🌈 PROMO SPONSOR</div>
   </header>
 
-  <main>
-    <section class="sponsor-section">
-      <h2>Sponsor Kami</h2>
-      <div class="sponsor-box">
-        <img src="assets/sponsor.jpg" alt="Sponsor">
-      </div>
-    </section>
-
-    <section class="etalase">
-      <h2>Etalase Produk</h2>
-      <div class="grid-produk">
-        <div class="produk"><img src="assets/fishit.jpg"><p>Fish It</p></div>
-        <div class="produk"><img src="assets/redfinger.jpg"><p>Red Finger</p></div>
-        <div class="produk"><img src="assets/fishit.jpg"><p>Joki Harian</p></div>
-        <div class="produk"><img src="assets/redfinger.jpg"><p>Joki Mingguan</p></div>
-        <div class="produk"><img src="assets/fishit.jpg"><p>Premium Service</p></div>
-        <div class="produk"><img src="assets/redfinger.jpg"><p>Add-on Spesial</p></div>
-      </div>
-    </section>
+  <main class="etalase">
+    <div class="produk" onclick="bukaPopup('Fish It', 'Rp25.000')">
+      <h3>Fish It</h3>
+      <p>Rp25.000</p>
+    </div>
+    <div class="produk" onclick="bukaPopup('Red Finger', 'Rp30.000')">
+      <h3>Red Finger</h3>
+      <p>Rp30.000</p>
+    </div>
+    <div class="produk" onclick="bukaPopup('Joki Rank', 'Rp40.000')">
+      <h3>Joki Rank</h3>
+      <p>Rp40.000</p>
+    </div>
+    <div class="produk" onclick="bukaPopup('Bundle Special', 'Rp50.000')">
+      <h3>Bundle Special</h3>
+      <p>Rp50.000</p>
+    </div>
+    <div class="produk" onclick="bukaPopup('Energy Boost', 'Rp20.000')">
+      <h3>Energy Boost</h3>
+      <p>Rp20.000</p>
+    </div>
+    <div class="produk" onclick="bukaPopup('Neon Token', 'Rp10.000')">
+      <h3>Neon Token</h3>
+      <p>Rp10.000</p>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 Neon Store — Energi Edition ⚡</p>
-  </footer>
-
-  <audio id="bg-music" loop>
-    <source src="assets/bg-music.mp3" type="audio/mpeg">
-  </audio>
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2 id="popup-name"></h2>
+      <p id="popup-price"></p>
+      <a id="wa-link" target="_blank">Pesan Sekarang</a>
+      <button onclick="tutupPopup()">Tutup</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
-  </html>
+</html>
