@@ -8,6 +8,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Partikel background */
 canvas {
   position: fixed;
   top: 0;
@@ -17,89 +18,111 @@ canvas {
   z-index: 0;
 }
 
-/* Sponsor Banner */
-.sponsor-banner {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
+/* INTRO SCREEN */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #180018, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+  animation: fadeIn 2s forwards;
 }
 
-.sponsor-banner img {
-  width: 100%;
-  display: block;
-  border-bottom: 4px solid #a000ff;
-  box-shadow: 0 0 25px #a000ff;
-  animation: glow 4s ease-in-out infinite alternate;
+.logo h1 {
+  font-size: 3.5em;
+  color: #b100ff;
+  text-shadow: 0 0 25px #b100ff, 0 0 50px #8000ff;
+  animation: pulse 3s infinite alternate;
 }
 
-@keyframes glow {
-  from { filter: brightness(1); }
-  to { filter: brightness(1.4) drop-shadow(0 0 30px #a000ff); }
+.logo p {
+  color: #bbb;
+  margin-bottom: 25px;
 }
 
-/* Promo Button */
-.promo-btn {
-  margin: 30px auto;
-  padding: 10px 20px;
-  background: linear-gradient(90deg, #ff00ff, #00ffff);
-  border-radius: 20px;
-  color: #fff;
-  text-shadow: 0 0 10px #fff;
-  font-weight: 600;
-  width: fit-content;
-  box-shadow: 0 0 20px #a000ff;
+#lanjutBtn {
+  padding: 10px 25px;
+  border: none;
+  background: linear-gradient(90deg, #6f00ff, #a000ff);
+  color: white;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px #6f00ff;
   transition: transform 0.3s;
-  position: relative;
-  z-index: 1;
 }
-.promo-btn:hover {
+#lanjutBtn:hover {
   transform: scale(1.1);
 }
 
-/* Etalase Produk */
+/* Sponsor Section */
+.sponsor {
+  text-align: center;
+  margin: 80px auto 30px;
+  position: relative;
+  z-index: 1;
+}
+.sponsor-box {
+  background: rgba(30, 0, 50, 0.9);
+  border: 2px solid #a000ff;
+  box-shadow: 0 0 25px #6f00ff;
+  padding: 15px;
+  width: 250px;
+  margin: auto;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Etalase */
 .etalase {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 25px;
-  padding: 20px 30px;
-  position: relative;
+  padding: 20px 40px;
   z-index: 1;
+  position: relative;
 }
 
-.produk-card {
-  background: rgba(20, 20, 20, 0.9);
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, #ff00ff, #00ffff) 1;
-  padding: 20px;
+.card {
+  background: rgba(15, 0, 25, 0.9);
   border-radius: 15px;
+  padding: 20px;
   text-align: center;
-  box-shadow: 0 0 15px #a000ff;
-  transition: transform 0.3s, box-shadow 0.3s;
+  color: #fff;
+  box-shadow: 0 0 20px #4d00ff;
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, #a000ff, #6f00ff) 1;
+  transform: rotateY(0deg);
+  transition: transform 0.6s, box-shadow 0.4s;
 }
-.produk-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px #00ffff;
-}
-
-/* Animasi Fade */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1.5s forwards;
-}
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+.card:hover {
+  transform: rotateY(10deg) scale(1.05);
+  box-shadow: 0 0 35px #a000ff;
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 25px;
-  color: #ccc;
-  font-size: 0.9rem;
-  text-shadow: 0 0 10px #a000ff;
-  z-index: 1;
-  position: relative;
+  padding: 30px;
+  color: #aaa;
+  text-shadow: 0 0 10px #6f00ff;
+}
+
+/* Animasi */
+@keyframes pulse {
+  from { text-shadow: 0 0 25px #a000ff; }
+  to { text-shadow: 0 0 50px #ff00ff, 0 0 100px #a000ff; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
   }
