@@ -1,41 +1,41 @@
-// Efek Partikel Bintang
+// Efek partikel
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
 const stars = [];
-const numStars = 150;
-
-for (let i = 0; i < numStars; i++) {
+for (let i = 0; i < 200; i++) {
   stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 1.5,
-    speed: Math.random() * 0.3 + 0.2
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.5,
+    d: Math.random() * 0.5
   });
 }
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+function animateStars() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
   ctx.fillStyle = "#fff";
-  stars.forEach(star => {
+  stars.forEach(s => {
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(200,0,255,${Math.random()})`;
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(150, 0, 255, ${Math.random()})`;
     ctx.fill();
-    star.y += star.speed;
-    if (star.y > canvas.height) {
-      star.y = 0;
-      star.x = Math.random() * canvas.width;
-    }
+    s.y += s.d;
+    if (s.y > innerHeight) s.y = 0;
   });
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animateStars);
 }
-animate();
+animateStars();
 
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+// Intro screen
+const intro = document.getElementById("intro");
+const lanjutBtn = document.getElementById("lanjutBtn");
+const bgm = document.getElementById("bgm");
+
+lanjutBtn.addEventListener("click", () => {
+  intro.style.opacity = 0;
+  setTimeout(() => intro.style.display = "none", 1000);
+  bgm.play().catch(() => console.log("Audio autoplay diblokir"));
 });
