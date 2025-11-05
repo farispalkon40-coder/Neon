@@ -1,191 +1,50 @@
-/* === NEON STORE V11 ULTRA === */
-/* Reset dasar */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif;
-}
-
-body {
-  background: radial-gradient(circle at center, #0a0010, #000);
-  color: #fff;
-  overflow: hidden;
-}
-
-/* === INTRO SCREEN === */
+/* --- INTRO SCREEN FIX --- */
 .intro-screen {
   position: fixed;
   inset: 0;
-  background: #000;
+  background: radial-gradient(circle at center, #0d001a, #000);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  z-index: 9999;
   overflow: hidden;
+  z-index: 9999; /* pastikan paling atas */
 }
 
+/* --- PORTAL GRID --- */
 .portal-grid {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-image: repeating-linear-gradient(
-    90deg, rgba(128,0,255,0.1) 0 2px, transparent 2px 100px
-  ),
-  repeating-linear-gradient(
-    0deg, rgba(128,0,255,0.1) 0 2px, transparent 2px 100px
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 2px,
+    transparent 2px,
+    transparent 10px
   );
-  animation: gridMove 6s linear infinite;
+  pointer-events: none; /* ini penting biar nggak nutup klik */
+  z-index: 1;
 }
 
-@keyframes gridMove {
-  0% { background-position: 0 0, 0 0; }
-  100% { background-position: 100px 100px, 100px 100px; }
-}
-
-.portal-title {
-  font-size: 3em;
-  color: #b23bff;
-  text-shadow: 0 0 20px #b23bff;
-  animation: pulseGlow 2s infinite alternate;
-}
-
+/* --- TOMBOL LANJUTKAN --- */
 .btn-neon {
-  margin-top: 2rem;
-  padding: 1rem 3rem;
-  background: transparent;
-  border: 2px solid #b23bff;
-  color: #fff;
+  position: relative;
+  z-index: 10; /* tombol di atas semua efek */
+  background: #a020f0;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 12px;
   font-size: 1.2em;
+  color: white;
   cursor: pointer;
-  border-radius: 10px;
-  transition: 0.3s;
-  text-shadow: 0 0 10px #b23bff;
+  text-shadow: 0 0 15px #a020f0;
+  transition: all 0.3s ease;
 }
 
 .btn-neon:hover {
-  background: #b23bff;
-  box-shadow: 0 0 20px #b23bff;
-}
-
-/* === HEADER === */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0,0,0,0.6);
-  position: sticky;
-  top: 0;
-  backdrop-filter: blur(5px);
-  z-index: 0;
-}
-
-.logo {
-  font-size: 2rem;
-  color: #b23bff;
-  text-shadow: 0 0 25px #b23bff, 0 0 50px #5000ff;
-  animation: pulseGlow 3s infinite alternate;
-}
-
-@keyframes pulseGlow {
-  0% { text-shadow: 0 0 10px #b23bff, 0 0 20px #5000ff; }
-  100% { text-shadow: 0 0 25px #b23bff, 0 0 60px #5000ff; }
-}
-
-.sound-btn {
-  background: transparent;
-  border: 2px solid #b23bff;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.sound-btn:hover {
-  background: #b23bff;
-  box-shadow: 0 0 20px #b23bff;
-}
-
-/* === SPONSOR BOX === */
-.sponsor-section {
-  text-align: center;
-  margin: 2rem auto;
-}
-
-.sponsor-box {
-  display: inline-block;
-  padding: 1rem 2rem;
-  border: 2px solid #b23bff;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.4);
-  font-weight: bold;
-  text-shadow: 0 0 10px #b23bff;
-}
-
-.glow {
-  animation: glowBox 3s infinite alternate;
-}
-
-@keyframes glowBox {
-  0% { box-shadow: 0 0 10px #b23bff; }
-  100% { box-shadow: 0 0 30px #b23bff; }
-}
-
-/* === ETALASE PRODUK === */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-
-.product-card {
-  background: rgba(30, 0, 40, 0.8);
-  border: 2px solid #b23bff;
-  border-radius: 20px;
-  box-shadow: 0 0 20px #5000ff;
-  padding: 1.5rem;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product-card:hover {
-  transform: scale(1.05) rotateX(5deg);
-  box-shadow: 0 0 40px #b23bff;
-}
-
-.product-card img {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-}
-
-.btn-buy {
-  background: #b23bff;
-  border: none;
-  color: #fff;
-  padding: 0.7rem 1.5rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-buy:hover {
-  background: #fff;
-  color: #b23bff;
-  box-shadow: 0 0 20px #b23bff;
-}
-
-/* === ANIMASI SCROLL === */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.8s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-        }
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #a020f0;
+  }
