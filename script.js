@@ -29,13 +29,23 @@ function animateStars() {
 }
 animateStars();
 
-// Intro screen
+// Intro screen (versi fix)
 const intro = document.getElementById("intro");
 const lanjutBtn = document.getElementById("lanjutBtn");
 const bgm = document.getElementById("bgm");
 
 lanjutBtn.addEventListener("click", () => {
-  intro.style.opacity = 0;
-  setTimeout(() => intro.style.display = "none", 1000);
-  bgm.play().catch(() => console.log("Audio autoplay diblokir"));
+  // mainkan musik dengan volume rendah
+  bgm.volume = 0.3;
+  bgm.play().catch(() => console.log("Audio autoplay diblokir, tapi tombol bekerja"));
+
+  // animasi hilang
+  intro.style.transition = "opacity 1s ease";
+  intro.style.opacity = "0";
+
+  // hilangkan elemen intro sepenuhnya
+  setTimeout(() => {
+    intro.style.display = "none";
+    document.body.style.overflowY = "auto";
+  }, 1000);
 });
