@@ -1,24 +1,59 @@
-// Admin Promax - mode lokal
-let clickCount = 0;
+// === ADMIN PRO MAX PANEL ===
 
-document.querySelector(".logo h1").addEventListener("click", () => {
-  clickCount++;
-  if (clickCount >= 5) {
-    const pass = prompt("Masukkan password admin:");
-    if (pass === "neonpromax") {
-      alert("Selamat datang di Admin Promax!");
-      enableAdminMode();
-    } else {
-      alert("Password salah!");
-    }
-    clickCount = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.body.classList.contains("admin-mode")) {
+    createAdminPanel();
   }
 });
 
-function enableAdminMode() {
-  document.querySelectorAll(".card").forEach(card => {
-    card.contentEditable = true;
-    card.style.outline = "2px dashed #ff00ff";
+function createAdminPanel() {
+  const panel = document.createElement("div");
+  panel.className = "admin-panel glow";
+
+  panel.innerHTML = `
+    <h2>⚙️ Admin Panel ProMax</h2>
+    <div class="admin-controls">
+      <button id="addProduct" class="admin-btn">+ Tambah Produk</button>
+      <button id="deleteProduct" class="admin-btn">❌ Hapus Produk Terakhir</button>
+      <button id="resetData" class="admin-btn">💾 Reset Semua</button>
+    </div>
+  `;
+
+  document.body.appendChild(panel);
+
+  const addBtn = panel.querySelector("#addProduct");
+  const delBtn = panel.querySelector("#deleteProduct");
+  const resetBtn = panel.querySelector("#resetData");
+
+  addBtn.addEventListener("click", () => {
+    const name = prompt("Nama produk:");
+    const price = prompt("Harga produk:");
+    const image = prompt("Link gambar produk (URL):", "https://via.placeholder.com/200");
+
+    if (!name || !price) return alert("Data tidak lengkap!");
+
+    const products = JSON.parse(localStorage.getItem("neonProducts")) || [];
+    products.push({ name, price, image });
+    localStorage.setItem("neonProducts", JSON.stringify(products));
+
+    alert("✅ Produk baru ditambahkan!");
+    location.reload();
   });
-  alert("Mode edit aktif! Klik teks produk untuk ubah langsung.");
-}
+
+  delBtn.addEventListener("click", () => {
+    let products = JSON.parse(localStorage.getItem("neonProducts")) || [];
+    if (products.length === 0) return alert("Tidak ada produk untuk dihapus!");
+    products.pop();
+    localStorage.setItem("neonProducts", JSON.stringify(products));
+    alert("❌ Produk terakhir dihapus!");
+    location.reload();
+  });
+
+  resetBtn.addEventListener("click", () => {
+    if (confirm("⚠️ Yakin mau reset semua data produk?")) {
+      localStorage.removeItem("neonProducts");
+      alert("Semua data produk dihapus!");
+      location.reload();
+    }
+  });
+  }
